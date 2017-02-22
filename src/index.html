@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {block:Description}
+        <meta name="description" content="{MetaDescription}" />
+        {/block:Description}
+        <meta name="text:Google Analytics ID" content=''/>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <title>{block:TagPage}{Tag} posts - {/block:TagPage}{block:PostSummary}{PostSummary} - {/block:PostSummary}{Title}</title>
+        <link rel="shortcut icon" href="{Favicon}">
+        <link rel="alternate" type="application/rss+xml" href="{RSS}">
+        <link href="http://static.tumblr.com/wgijwsy/k1Hm9ei8b/normalize.css" rel="stylesheet" type="text/css" />
+        <link href="http://static.tumblr.com/nxwjyyg/k3Tokde7h/style.css" rel="stylesheet" type="text/css" />
+
+        {block:IfGoogleFonts}
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family={text:Google Fonts}:400,400italic,700,700italic">
+        {/block:IfGoogleFonts}
+
+        {block:Hidden}
+        <!-- Font -->
+        <meta name="text:Google Fonts" content="Karla">
+        <meta name="if:Google Fonts" content="1">
+        <!-- Color -->
+        <meta name="color:Body Text" content="#000">
+        <meta name="color:Background" content="#FFF">
+        <meta name="color:Links" content="#EC5E67">
+        <!-- Toggle -->
+        <meta name="if:Show Archive" content="1">
+        <meta name="if:Center Header" content="1">
+        <meta name="if:Center Text" content="0">
+        <meta name="if:Show Logo" content="0">
+        <meta name="if:Sticky Logo" content="0">
+        <meta name="if:Show Title" content="1">
+        <meta name="if:Sticky Title" content="1">
+        <meta name="if:Show Description" content="1">
+        <meta name="if:Sticky Description" content="0">
+        <meta name="if:Show Share Button" content="1">
+        <meta name="if:Show Like Button" content="1">
+        <meta name="if:Show Reblog Button" content="1">
+        <meta name="if:Show Date" content="1">
+        <meta name="if:Show Notes" content="1">
+        <meta name="if:Show Tags" content="1">
+        <meta name="if:Hide Source" content="1">
+        <meta name="if:Show Large Images" content="0">
+
+        <!-- Text -->
+        <meta name="text:Twitter URL" content="">
+        <meta name="text:Facebook URL" content="">
+        <meta name="text:Instagram URL" content="">
+        <meta name="text:Google Plus URL" content="">
+        <meta name="text:Pinterest URL" content="">
+        <meta name="text:LinkedIn URL" content="">
+        <meta name="text:Dribbble URL" content="">
+        <meta name="text:Flickr URL" content="">
+        <meta name="text:Vimeo URL" content="">
+        <meta name="text:StumbleUpon URL" content="">
+        <meta name="text:LastFM URL" content="">
+        <meta name="text:Spotify URL" content="">
+        <meta name="text:Skype URL" content="">
+        <meta name="text:Github URL" content="">
+        <meta name="text:Weibo URL" content="">
+        <meta name="text:Soundcloud URL" content="">
+        <meta name="text:Behance URL" content="">
+        <meta name="text:VK URL" content="">
+        <meta name="text:Renren URL" content="">
+        {/block:Hidden}
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            html,
+            body {
+                height: 100%;
+            }
+
+            body {
+                font-family: {text:Google Fonts}, 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+                font-size: 16px;
+                color: {color:Body Text};
+                position: relative;
+                line-height: 24px;
+                line-height: 1.5em;
+                background: {color:Background};
+                -webkit-font-smoothing: antialiased;
+            }
+
+            .bottom__copyright a:after {
+                background: {color:Body Text};
+            }
+
+             .icon-heart,
+             .like_text,
+            a {
+                color: {color:Body Text};
+                opacity: .6;
+                transition: all .3s ease;
+            }
+
+            .like_button:hover + .like_text {
+                opacity: 1;
+            }
+
+              h1.title a {
+                line-height: 36px;
+                line-height: 2em;
+                font-weight: normal;
+                color: {color:Body Text};
+                opacity: 1;
+            }
+
+            .like_text, .reblog-button {
+                opacity: 1;
+            }
+            .like_emoji, .reblog_emoji {
+                font-size: 12px;
+            }
+
+            .hamburger {
+                color:{color:Body Text};
+            }
+
+            .sticky-description
+            .header-desc.fixed,
+            .sticky-logo .header-avatar.fixed,
+            .sticky-title .head-title.fixed {
+                z-index: 100;
+            }
+
+            .header-desc {
+                cursor: default;
+            }
+
+            .header-overlay,
+            .header-overlay .preloader {
+                width: 90px;
+            }
+
+            .header-overlay .preloader {
+                position: relative;
+                top: 50%;
+            }
+
+        {CustomCSS}
+        </style>
+    </head>
+    <body class="
+    {block:IfGoogleFonts} has-google-fonts{/block:IfGoogleFonts}
+    {block:IndexPage} page-index{/block:IndexPage}
+    {block:IfCenterText} has-center-text{/block:IfCenterText}
+    {block:IfCenterHeader} has-center-header{/block:IfCenterHeader}
+    {block:IfShowLogo}{block:IfStickyLogo} sticky-logo{/block:IfStickyLogo}{/block:IfShowLogo}
+    {block:IfShowTitle}{block:IfStickyTitle} sticky-title{/block:IfStickyTitle}{/block:IfShowTitle}
+    {block:IfShowDescription}{block:IfStickyDescription} sticky-description{/block:IfStickyDescription}{/block:IfShowDescription}
+    {block:PermalinkPage} page-permalink{/block:PermalinkPage}
+    {block:IfShowLogo}avatar-style-{AvatarShape}{/block:IfShowLogo}
+    {block:PermalinkPage}{block:Photoset} page-photoset{/block:Photoset}{/block:PermalinkPage}
+    ">
+
+        <div class="load-wrapper">
+            <div class="header-overlay">
+                <img class="preloader" src="http://static.tumblr.com/kptajxv/H4yols5bw/animal__1_.gif" />
+            </div>
+        </div><!--loadwrapper-->
+
+        <section class="wrapper">
+        {block:PermalinkPage}
+        <div class="blog-title-wrapper content">
+            <h1 class="blog-title">
+                <a href="/" class="back_button">&larr;</a>
+            </h1>
+        </div>
+        {/block:PermalinkPage}
+
+        <!--Masthead-->
+            <header id="masthead">
+            <!--Details: portrait, title and description-->
+                <div id="site_name">
+                    <div class="site_name-wrapper">
+                        {block:IfShowLogo}
+                        <div class="header-avatar">
+                            <img class="user-avatar hero" src="{PortraitURL-128}"/>
+                        </div>
+                        {/block:IfShowLogo}
+                        {block:IfShowTitle}<h1 class="head-title hero"><a href="/" title="{lang:Home}">{Title}</a></h1>{/block:IfShowTitle}
+                        {block:IfShowDescription}
+                        {block:Description}
+                        <p class="header-desc hero">{Description}</p>
+                        {block:Description}
+                        {/block:IfShowDescription}
+                    </div>
+                </div>
+            <!--Navigation-->
+                <nav class="header">
+                    <button class="hamburger">
+                        Menu
+                    </button>
+                    <ul class="nav">
+                        {block:HasPages}
+                        {block:Pages}
+                        <li>
+                            <a href="{URL}" class="nav-item">{Label}</a>
+                        </li>
+                        {/block:Pages}
+                        {/block:HasPages}
+                        {block:IfShowArchive}
+                         <li>
+                            <a href="/archive" class="nav-item">{lang:Archive}</a>
+                         </li>
+                        {/block:IfShowArchive}
+                        {block:SubmissionsEnabled}
+                        <li>
+                            <a href="/submit" class="nav-item">{SubmitLabel}</a>
+                        </li>
+                        {/block:SubmissionsEnabled}
+                        {block:AskEnabled}
+                        <li>
+                            <a href="/ask" class="nav-item">{AskLabel}</a>
+                        </li>
+                        {/block:AskEnabled}
+                        {block:IfGithubURL}
+                        <li>
+                            <a href="{text:Github URL}" class="nav-item">Github</a>
+                        </li>
+                        {/block:IfGithubURL}
+                        {block:IfFlickrURL}
+                        <li>
+                            <a href="{text:Flickr URL}" class="nav-item">Flickr</a>
+                        </li>
+                        {/block:IfFlickrURL}
+                        {block:IfVimeoURL}
+                        <li>
+                            <a href="{text:Vimeo URL}" class="nav-item">Vimeo</a>
+                        </li>
+                        {/block:IfVimeoURL}
+                        {block:IfTwitterURL}
+                        <li>
+                            <a href="{text:Twitter URL}" class="nav-item">Twitter</a>
+                        </li>
+                        {/block:IfTwitterURL}
+                        {block:IfFacebookURL}
+                        <li>
+                            <a href="{text:Facebook URL}" class="nav-item">Facebook</a>
+                        </li>
+                        {/block:IfFacebookURL}
+                        {block:IfGooglePlusURL}
+                        <li>
+                            <a href="{text:Google Plus URL}" class="nav-item">Google Plus</a>
+                        </li>
+                        {/block:IfGooglePlusURL}
+                        {block:IfPinterestURL}
+                        <li>
+                            <a href="{text:Pinterest URL}" class="nav-item">Pinterest</a>
+                        </li>
+                        {/block:IfPinterestURL}
+                        {block:IfLinkedInURL}
+                        <li>
+                            <a href="{text:LinkedIn URL}" class="nav-item">Linkedin</a>
+                        </li>
+                        {/block:IfLinkedInURL}
+                        {block:IfDribbbleURL}
+                        <li>
+                            <a href="{text:Dribbble URL}" class="nav-item">Dribbble</a>
+                        </li>
+                        {/block:IfDribbbleURL}
+                        {block:IfStumbleUponURL}
+                        <li>
+                            <a href="{text:StumbleUpon URL}" class="nav-item">StumbleUpon</a>
+                        </li>
+                        {/block:IfStumbleUponURL}
+                        {block:IfLastFMURL}
+                        <li>
+                            <a href="{text:LastFM URL}" class="nav-item">LastFM</a>
+                        </li>
+                        {/block:IfLastFMURL}
+                        {block:IfSpotifyURL}
+                        <li>
+                            <a href="{text:Spotify URL}" class="nav-item">Spotify</a>
+                        </li>
+                        {/block:IfSpotifyURL}
+                        {block:IfInstagramURL}
+                        <li>
+                            <a href="{text:Instagram URL}" class="nav-item">Instagram</a>
+                        </li>
+                        {/block:IfInstagramURL}
+                        {block:IfSkypeURL}
+                        <li>
+                            <a href="{text:Skype URL}" class="nav-item">Skype</a>
+                        </li>
+                        {/block:IfSkypeURL}
+                        {block:RenrenURL}
+                        <li>
+                            <a href="{text:Renren URL}" class="nav-item">Renren</a>
+                        </li>
+                        {/block:RenrenURL}
+                        {block:IfWeiboURL}
+                        <li>
+                            <a href="{text:Weibo URL}" class="nav-item">Weibo</a>
+                        </li>
+                        {/block:IfWeiboURL}
+                        {block:IfSoundcloudURL}
+                        <li>
+                            <a href="{text:Soundcloud URL}" class="nav-item">Soundcloud</a>
+                        </li>
+                        {/block:IfSoundcloudURL}
+                        {block:IfBehanceURL}
+                        <li>
+                            <a href="{text:Behance URL}" class="nav-item">Behance</a>
+                        </li>
+                        {/block:IfBehanceURL}
+                        {block:IfVKURL}
+                        <li>
+                            <a href="{text:VK URL}" class="nav-item">VK</a>
+                        </li>
+                        {/block:IfVKURL}
+                    </ul>
+                </nav>
+
+            </header>
+        <!--Content holder-->
+        <div id="content">
+            {block:Posts}
+
+
+
+
+            <article>
+            <!--Unique code for each post type-->
+                {block:Text}
+                    <div class="text container">
+                    {block:Title}<h1 class="title"><a href="{Permalink}">{Title}</a></h1>{/block:Title}
+                    {Body}
+
+                {/block:Text}
+
+                {block:Photo}
+                    <div class="photo">
+                        <div class="container-l
+                        {block:IfShowLargeImages} feature-has-large-images{/block:IfShowLargeImages}
+                        ">
+                    {block:IndexPage}
+                    {LinkOpenTag}
+                    {/block:IndexPage}
+                            <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>
+                    {block:IndexPage}
+                    {LinkCloseTag}
+                    {/block:IndexPage}
+                        </div>
+                        <div class="container">
+                        {block:Caption}{Caption}{/block:Caption}
+                        </div>
+
+                {/block:Photo}
+
+                {block:Photoset}
+                    <div class="photoset">
+                        <div class="container-l
+                        {block:IfShowLargeImages} feature-has-large-images{/block:IfShowLargeImages}
+                        ">
+                        {Photoset}
+                        </div>
+                        <div class="container">
+                        {block:Caption}{Caption}{/block:Caption}
+                        </div>
+
+                {/block:Photoset}
+
+                {block:Panorama}
+                    <div class="panorama">
+                        <div class="container-l
+                        {block:IfShowLargeImages} feature-has-large-images{/block:IfShowLargeImages}
+                        ">
+                    {block:IndexPage}
+                    <a href="{Permalink}">
+                        <span href="{LinkURL}">
+                    {/block:IndexPage}
+                            <img src="{PhotoURL-Panorama}" alt="{PhotoAlt}" />
+                    {block:IndexPage}
+                        </span>
+                    </a>
+                    {/block:IndexPage}
+                        </div>
+                        <div class="container">
+                        {block:Caption}{Caption}{/block:Caption}
+                        </div>
+
+                {/block:Panorama}
+
+                {block:Quote}
+                    <div class="quote container">
+                        <blockquote>{Quote}</blockquote>
+                        {block:Source}<cite> &mdash; {Source} </cite>{/block:Source}
+
+                {/block:Quote}
+
+                {block:Link}
+                    <div class="link container">
+                        <h1 class="title"><a href="{URL}">{Name} →</a></h1>
+                        {block:Description}{Description}{/block:Description}
+
+                {/block:Link}
+
+                {block:Chat}
+                    <div class="chat container">
+                        <ul>
+                        {block:Lines}<li class="{Alt}">{block:Label}<span class="label">{Label}</span>{/block:Label}<p> {Line} </p></li>{/block:Lines}
+                        </ul>
+
+                {/block:Chat}
+
+                {block:Audio}
+                    <div class="audio container">
+                    {block:TrackName}<h1 class="title"><a href="{Permalink}">{TrackName}</a></h1>{/block:TrackName}
+                    {block:AlbumArt}<img src="{AlbumArtURL}" width="500" height="500"/>{/block:AlbumArt}
+                    <div class="player">{AudioPlayerBlack}</div>
+                    {block:Caption}{Caption}{/block:Caption}
+
+                {/block:Audio}
+
+                {block:Video}
+                    <div class="video container">
+                        <div class="video-player">{Video-500}</div>
+                        {block:Caption}{Caption}{/block:Caption}
+
+                {/block:Video}
+
+                {block:Answer}
+                    <div class="answer container">
+                        <h1 class="title">{Question}</h1>
+                        <div class="user">
+                            <img src="{AskerPortraitURL-96}"/>
+                            <p>{Asker}</p>
+                        </div>
+
+                    {Answer}
+                {/block:Answer}
+                </div>
+                {block:Date}
+                <footer class="post__footer container">
+                    {block:IfShowShareButton}
+                    <div class="social">
+                        <span class="share__text">Share on</span>
+                        <a href="http://www.facebook.com/sharer.php?u={ShortURL}">Facebook</a>,
+                        <a href="http://www.twitter.com/share?url={ShortURL}">Twitter</a>
+                    </div>
+                    {/block:IfShowShareButton}
+                    <div class="metadata">
+                        <ul class="post__buttons">
+                            {block:IfShowLikeButton}
+                            <li class="custom-like-button">
+                                <div class="button custom-like-button like-button">
+                                    {LikeButton}
+                                    <span class="like_text">
+                                        <span class="like_emoji">❤️</span> Like
+                                    </span>
+                                    <span class="like_text like_text--liked ">
+                                        <span class="like_emoji">💖️</span> Liked
+                                    </span>
+                                </div>
+                            </li>
+                            {/block:IfShowLikeButton}
+
+                            {block:IfShowReblogButton}
+                            <li>
+                                <a class="button reblog-button" href="{ReblogURL}" target="_blank"><span class="reblog_emoji">⚡️</span>️ Reblog</a>
+                            </li>
+                            {/block:IfShowReblogButton}
+                        </ul>
+
+                        <ul class="post__info">
+                            {block:IfShowDate}
+                            <li>
+                                <a class="time-ago" data-toggle="modal" href="{Permalink}" data-target="#myModal">{TimeAgo}</a>
+                            </li>
+                            {/block:IfShowDate}
+
+                        {block:IfShowNotes}
+                        {block:IndexPage}
+                        {block:NoteCount}
+                        <li>
+                            <a class="note-count" href="{Permalink}#notes">{NoteCountWithLabel}</a>
+                        </li>
+                        {/block:NoteCount}
+                        {/block:IndexPage}
+
+                        {block:PermalinkPage}
+                        {block:NoteCount}
+                        <li>
+                            <a id="notes-link" class="note-count" href="#">{NoteCountWithLabel}</a>
+                        </li>
+                        {/block:NoteCount}
+                        {/block:PermalinkPage}
+                        {/block:IfShowNotes}
+                        </ul>
+
+                        <ul class="post__tags">
+                        {block:IfShowTags}
+                        {block:HasTags}
+                        {block:Tags}
+                            <li>
+                                <a href="{TagURL}">#{Tag}</a>
+                            </li>{/block:Tags}
+                        {/block:HasTags}
+                        {/block:IfShowTags}
+                        </ul>
+                    </div>
+                </footer>
+                {/block:Date}
+            </article>
+            {/block:Posts}
+
+            <!--Close of article-->
+            </div>
+            <!--Pagination: previous/next page links-->
+            {block:Pagination}
+            <nav id="pagination">
+                <ul>
+                    {block:PreviousPage}
+                    <li>
+                        <a href="{PreviousPage}" class="previous">Previous page</a>
+                    </li>
+                    {/block:PreviousPage}
+                    {block:NextPage}
+                    <li>
+                        <a href="{NextPage}" class="next">Loading..</a>
+                    </li>
+                    {/block:NextPage}
+                </ul>
+            </nav>
+            {/block:Pagination}
+            {block:PostNotes}
+            <div id="notes">
+                {PostNotes-64}
+            </div>
+            {/block:PostNotes}
+        </section>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+        <script src="http://static.tumblr.com/hpghjri/co2nfnr1j/infinitescroll.min.js"></script>
+        <script src="http://static.tumblr.com/nxwjyyg/mzjokdeab/script.js"></script>
+
+        <script>
+        var _gaq=[['_setAccount','{text:Google Analytics ID}'],['_trackPageview']];
+        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g,s)}(document,'script'));
+
+$(function(){var t=$("#content");t.infinitescroll({nextSelector:"#pagination .next",navSelector:"#pagination",itemSelector:"article",appendCallback:!0,bufferPx:500,{block:IfShowTrigger}behavior:"twitter",{/block:IfShowTrigger}loading:{finishedMsg:" ",img:"data:image/gif;base64,R0lGODlhAQABAHAAACH5BAUAAAAALAAAAAABAAEAAAICRAEAOw==",msg:null,msgText:" ",selector:null,finished:function(){$("#pagination .next").html("{lang:Load more posts}")}}},function(t){var n=$(t),i=n.map(function(){return this.id}).get();console.log(n,i),Tumblr.LikeButton.get_status_by_post_ids(i)})});{block:IfHideSource}$("p").remove(":contains('Source:'),:contains('via ')");{/block:IfHideSource}
+        </script>
+    </body>
+</html>
