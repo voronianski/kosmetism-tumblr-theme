@@ -1,4 +1,4 @@
-# [kosmetism](http://kosmetism.pixelhunter.me) theme
+# [kosmetism](http://kosmetism.pixelhunter.me) tumblr theme
 
 > Sources of my personal inspiration feed kind-of-blog theme powered by Tumblr.
 
@@ -6,7 +6,7 @@
 
 It's a fork of original free [Basic Theme](https://otherthemes.com/themes/basic) by awesome [Other Themes](https://otherthemes.com). Grazie ragazzi!
 
-<img src="https://otherthemes.com/images/home-hero-animated-17baf47599.gif" widht="300" />
+<img src="https://otherthemes.com/images/home-hero-animated-17baf47599.gif" width="300" />
 
 ## Other cool themes
 
